@@ -1,0 +1,32 @@
+# Zen Internet Blog
+application: zeninternetblog
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: no
+
+handlers:
+- url: /index.html
+  static_files: index.html
+  upload: index.html
+
+- url: /favicon.ico
+  static_files: resources/images/favicon.ico
+  upload: resources/images/favicon.ico
+  
+- url: /app.json
+  static_files: app.json
+  upload: app.json
+
+- url: /app.js
+  static_files: app.js
+  upload: app.js
+
+- url: /app
+  static_dir: app
+
+- url: /resources
+  static_dir: resources
+
+- url: /sdk
+  static_dir: sdk
