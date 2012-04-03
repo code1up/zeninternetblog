@@ -10,8 +10,8 @@ Ext.define("App.view.blog.List", {
         styleHtmlContent: true,
 
         itemTpl: [
-            "<h3><strong>{title}</strong></h3>",
-            "<em>{author} - {publishedDate}</em>",
+            "<h2>{title}</h2>",
+            "<em>{author} - {publishedDate:date}</em>",
             "<br />{contentSnippet}"
         ].join("")
     }

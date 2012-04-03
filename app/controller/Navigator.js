@@ -41,29 +41,14 @@ Ext.define("App.controller.Navigator", (function() {
     }
 
     function _showBlogEntry(controller, blogEntry) {
-        var title = controller.getBlogEntryTitle();
-        var credits = controller.getBlogEntryCredits();
-        var content = controller.getBlogEntryContent();
+        var view = controller.getBlogEntryView();
 
-        var scrollable = content.getScrollable();
+        var scrollable = view.getScrollable();
         var scroller = scrollable.getScroller();
 
-        // Set title
-        // title.setHtml("<h2>" + blogEntry.title + "</h2>");
-
-        // Set credits
-        credits.setHtml([
-            "<em>",
-            "Posted by ",
-            blogEntry.author,
-            " - ",
-            blogEntry.publishedDate,
-            "</em>"
-        ].join(""));
-
         // Set content
-        content.setHtml(blogEntry.content);
         scroller.scrollTo(0, 0);
+        view.setData(blogEntry);
 
         _setActiveItem(controller, 1);
         _showHideBackButton(controller, true);
@@ -97,9 +82,6 @@ Ext.define("App.controller.Navigator", (function() {
 
                 // Blog entry
                 blogEntryView: "blogentry",
-                blogEntryTitle: "blogentry #title",
-                blogEntryCredits: "blogentry #credits",
-                blogEntryContent: "blogentry #content",
 
                 // TitleBar
                 titleBar: "blognavigator #titleBar",
@@ -124,12 +106,14 @@ Ext.define("App.controller.Navigator", (function() {
         },
 
         // Move to view?
-        initialize: function () {
-            Ext.Viewport.on("orientationchange", function() {
+        launch: function () {
+            console.log("App.controller.Navigator::launch()");
 
+            Ext.Viewport.on("orientationchange", function() {
+                console.log("App.controller.Navigator::orientationchange()");
             });
 
-            this.callParent(arguments);
+            // TODO: this.callParent(arguments);
         }
     };
 }()));
