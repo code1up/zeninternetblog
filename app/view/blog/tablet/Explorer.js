@@ -8,7 +8,7 @@ Ext.define("App.view.blog.tablet.Explorer", (function() {
     });
 
     var _titleBar = Ext.create("Ext.TitleBar", {
-        id: "titleBar2",
+        id: "titleBar", // TODO: TODOX: did this break anything?
 
         docked: "top",
         title: "Zen Internet Blog",
