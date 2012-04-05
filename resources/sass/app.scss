@@ -21,3 +21,7 @@ $base-gradient: 'glossy';
 // @include sencha-carousel;
 // @include sencha-form;
 @include sencha-msgbox;
+
+@include pictos-iconmask(chat_black1);
+@include pictos-iconmask(twitter2);
+@include pictos-iconmask(help_black);

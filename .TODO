@@ -1,14 +1,6 @@
-Fix colors (matte?)
-
 Implement module pattern everywhere
 
-Create table code / folders
-
 Add Humans.txt
-
-Add icons for Twitter, Blog, About
-
-Add more tabpanels: Blog, Twitter, About
 
 Handle portrait / landscape orientation change on iPad
 
@@ -17,6 +9,16 @@ How can I debug on iPad (Weinre / iWebInspector etc.)
 Why is iPad startup screen blank?
 
 Create startup screens and icons for Zen
+
+Add togglable ellipsis button to hide detail in posts list
+
+DONE Add icons for Twitter, Blog, About
+
+WIP Add more tabpanels: Blog, Twitter, About
+
+WIP Create tablet code / folders
+
+WIP Fix colors (matte?)
 
 DONE Move existing code to phone folders
 
