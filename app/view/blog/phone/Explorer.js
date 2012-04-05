@@ -1,4 +1,4 @@
-Ext.define("App.view.blog.Navigator", (function() {
+Ext.define("App.view.blog.phone.Explorer", (function() {
 
     var _backButton = Ext.create("Ext.Button", {
         id: "backButton",
@@ -21,24 +21,22 @@ Ext.define("App.view.blog.Navigator", (function() {
 
     return {
         extend: "Ext.Panel",
-        xtype: "blognavigator",
+        xtype: "blogexplorer",
 
         config: {
             layout: {
                 type: "card"
             },
 
-            // activeItem: 1,
-
             items: [
                 _titleBar,
                 {
-                    xtype: "bloglist",
-                    id: "blogList"
+                    xtype: "blogposts",
+                    id: "blogPosts"
                 },
                 {
-                    xtype: "blogentry",
-                    id: "blogEntry"
+                    xtype: "blogpost",
+                    id: "blogPost"
                 }
             ]
         }

@@ -8,8 +8,8 @@ Ext.define("App.view.Container", {
 
         items: [
             {
-                xtype: "blognavigator",
-                
+                xtype: "blogexplorer",
+
                 title: "Blog",
                 iconCls: "star"
             }

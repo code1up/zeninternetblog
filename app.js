@@ -13,7 +13,12 @@ Ext.application({
     ],
 
     controllers: [
-        "App.controller.Navigator"
+        "App.controller.phone.Explorer" // TODO: phone
+    ],
+
+    profiles: [
+        "Phone",
+        "Tablet"
     ],
 
     icon: {
@@ -29,9 +34,6 @@ Ext.application({
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly("appLoadingIndicator").destroy();
-
-        // Initialize the main view
-        Ext.Viewport.add(Ext.create("App.view.Container"));
     },
 
     onUpdated: function() {

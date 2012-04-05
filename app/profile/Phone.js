@@ -3,21 +3,24 @@ Ext.define("App.profile.Phone", {
 
     config: {
         views: [
-            "App.view.phone.Container"
+            "App.view.Container",
+            "App.view.blog.phone.Explorer",
+            "App.view.blog.Posts",
+            "App.view.blog.Post"
         ],
 
         controllers: [
-            "Phone",
-            "Navigator"
+            "App.controller.phone.Explorer"
         ]
     },
 
     isActive: function() {
-        return Ext.os.is.Phone;
+        // return !Ext.os.is.Phone;
+        return true; // TODO
     },
 
     launch: function() {
-        console.log("profile.Phone::launch");
-        Ext.create("App.view.phone.Container");
+        console.log("App.profile.Phone::launch()");
+        Ext.create("App.view.Container");
     }
 });

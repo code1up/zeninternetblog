@@ -1,4 +1,4 @@
-Ext.define("App.model.blog.Entry", {
+Ext.define("App.model.blog.Post", {
     extend: "Ext.data.Model",
 
     config: {

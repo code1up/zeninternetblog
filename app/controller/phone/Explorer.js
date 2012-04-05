@@ -1,12 +1,10 @@
-Ext.define("App.controller.Navigator", (function() {
+Ext.define("App.controller.phone.Explorer", (function() {
 
     function _setActiveItem(controller, index) {
-        var view = controller.getBlogNavigatorView();
+        var view = controller.getExplorer();
         var layout = view.getLayout();
 
         var direction = index === 0 ? "right" : "left";
-
-        console.log(direction);
 
         layout.setAnimation({
             type: "slide",
@@ -35,20 +33,20 @@ Ext.define("App.controller.Navigator", (function() {
         }
     }
 
-    function _showBlogList(controller) {
+    function _showPosts(controller) {
         _setActiveItem(controller, 0);
         _showHideBackButton(controller, false);
     }
 
-    function _showBlogEntry(controller, blogEntry) {
-        var view = controller.getBlogEntryView();
+    function _showPost(controller, post) {
+        var view = controller.getBlogPostView();
 
         var scrollable = view.getScrollable();
         var scroller = scrollable.getScroller();
 
         // Set content
         scroller.scrollTo(0, 0);
-        view.setData(blogEntry);
+        view.setData(post);
 
         _setActiveItem(controller, 1);
         _showHideBackButton(controller, true);
@@ -59,47 +57,43 @@ Ext.define("App.controller.Navigator", (function() {
 
         config: {
             models: [
-                "App.model.blog.Entry"
+                "App.model.blog.Post"
             ],
 
             views: [
                 "App.view.Container",
-                "App.view.blog.Navigator",
-                "App.view.blog.List",
-                "App.view.blog.Entry"
+                "App.view.blog.phone.Explorer",
+                "App.view.blog.Posts",
+                "App.view.blog.Post"
             ],
 
             stores: [
-                "App.store.blog.Entries"
+                "App.store.blog.Posts"
             ],
 
             refs: {
-                // Blog Navigator
-                blogNavigatorView: "blognavigator",
-
-                // Blog list
-                blogListView: "bloglist",
-
-                // Blog entry
-                blogEntryView: "blogentry",
+                // Primary views
+                explorer: "blogexplorer",
+                blogPostsView: "blogexplorer #blogPosts",
+                blogPostView: "blogexplorer #blogPost",
 
                 // TitleBar
-                titleBar: "blognavigator #titleBar",
+                titleBar: "blogexplorer #titleBar",
 
                 // Buttons
-                backButton: "blognavigator #backButton"
+                backButton: "blogexplorer #backButton"
             },
 
             control: {
-                blogListView: {
+                blogPostsView: {
                     itemtap: function(list, index, target, record, event) {
-                        _showBlogEntry(this, record.data);
+                        _showPost(this, record.data);
                     }
                 },
 
                 backButton: {
                     tap: function() {
-                        _showBlogList(this);
+                        _showPosts(this);
                     }
                 }
             }
@@ -107,13 +101,13 @@ Ext.define("App.controller.Navigator", (function() {
 
         // Move to view?
         launch: function () {
-            console.log("App.controller.Navigator::launch()");
+            console.log("App.controller.phone.Navigator::launch()");
+
+            this.callParent(arguments);
 
             Ext.Viewport.on("orientationchange", function() {
-                console.log("App.controller.Navigator::orientationchange()");
+                console.log("App.controller.phone.Navigator::orientationchange()");
             });
-
-            // TODO: this.callParent(arguments);
         }
     };
 }()));

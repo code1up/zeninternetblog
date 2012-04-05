@@ -3,16 +3,9 @@ Ext.define("App.profile.Tablet", {
 
     config: {
         views: [
-            "App.view.tablet.Container",
-            "App.view.Navigator",
-            "App.view.blog.List",
-            "App.view.blog.Entry",
-            "App.view.About"
         ],
 
         controllers: [
-            "Tablet",
-            "Navigator"
         ]
     },
 
@@ -22,6 +15,7 @@ Ext.define("App.profile.Tablet", {
     },
 
     launch: function() {
+        console.log("App.profile.Tablet::launch");
         Ext.create("App.view.tablet.Container");
     }
 });

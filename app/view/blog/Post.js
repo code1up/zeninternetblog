@@ -1,8 +1,8 @@
-Ext.define("App.view.blog.Entry", (function() {
+Ext.define("App.view.blog.Post", (function() {
 
     return {
         extend: "Ext.Panel",
-        xtype: "blogentry",
+        xtype: "blogpost",
 
         config: {
             layout: "fit",

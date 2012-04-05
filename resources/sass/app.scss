@@ -1,5 +1,8 @@
 $base-color: #00928F;
-$active-color: #FFFFFF;
+$active-color: #40E0D0;
+
+// Options: ‘matte’, ‘bevel’, ‘glossy’, ‘recessed’, and ‘flat’.
+$base-gradient: 'flat';
 
 @import 'sencha-touch/default/all';
 

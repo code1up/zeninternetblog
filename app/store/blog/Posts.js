@@ -1,4 +1,4 @@
-Ext.define("App.store.blog.Entries", {
+Ext.define("App.store.blog.Posts", {
     extend: "Ext.data.Store",
 
     requires: [
@@ -7,7 +7,7 @@ Ext.define("App.store.blog.Entries", {
 
     config: {
         storeId: "blogstore",
-        model: "App.model.blog.Entry",
+        model: "App.model.blog.Post",
 
         autoLoad: true,
 
