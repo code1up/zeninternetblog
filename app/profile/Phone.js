@@ -16,7 +16,7 @@ Ext.define("App.profile.Phone", {
 
     isActive: function() {
         // return !Ext.os.is.Phone;
-        return true; // TODO
+        return false; // TODO
     },
 
     launch: function() {

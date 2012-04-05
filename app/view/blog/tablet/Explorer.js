@@ -1,16 +1,17 @@
-Ext.define("App.view.blog.table.Explorer", (function() {
+Ext.define("App.view.blog.tablet.Explorer", (function() {
 
     var _postsButton = Ext.create("Ext.Button", {
         id: "postsButton",
         text: "Posts",
-        align: "left"
+        align: "left",
+        visible: false // TODO: depends on orientation
     });
 
     var _titleBar = Ext.create("Ext.TitleBar", {
-        id: "titleBar",
+        id: "titleBar2",
 
         docked: "top",
-        title: "Zen Blog",
+        title: "Zen Internet Blog",
 
         items: [
             _postsButton
@@ -22,24 +23,28 @@ Ext.define("App.view.blog.table.Explorer", (function() {
         xtype: "blogexplorer",
 
         config: {
-            layout: {
-                type: "hbox"
-            },
+            fullscreen: true,
+            layout: { type: "hbox" },
 
             items: [
                 _titleBar,
+
                 {
                     xtype: "blogposts",
-                    id: "blogPosts"
+                    id: "blogPosts",
+
+                    flex: 1
                 },
                 {
                     xtype: "spacer",
-                    width: "1px",
+                    width: "2px",
                     style: "background-color: #000000"
                 },
                 {
                     xtype: "blogpost",
-                    id: "blogPost"
+                    id: "blogPost",
+
+                    flex: 2
                 }
             ]
         }

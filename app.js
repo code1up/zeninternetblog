@@ -12,10 +12,6 @@ Ext.application({
         "Ext.TitleBar" // TODO: is there an Ext.require function?
     ],
 
-    controllers: [
-        "App.controller.phone.Explorer" // TODO: phone
-    ],
-
     profiles: [
         "Phone",
         "Tablet"

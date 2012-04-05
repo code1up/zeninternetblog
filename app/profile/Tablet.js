@@ -3,9 +3,14 @@ Ext.define("App.profile.Tablet", {
 
     config: {
         views: [
+            "App.view.Container",
+            "App.view.blog.phone.Explorer",
+            "App.view.blog.Posts",
+            "App.view.blog.Post"
         ],
 
         controllers: [
+            "App.controller.tablet.Explorer"
         ]
     },
 
@@ -16,6 +21,6 @@ Ext.define("App.profile.Tablet", {
 
     launch: function() {
         console.log("App.profile.Tablet::launch");
-        Ext.create("App.view.tablet.Container");
+        Ext.create("App.view.Container");
     }
 });

@@ -12,6 +12,18 @@ Ext.define("App.view.Container", {
 
                 title: "Blog",
                 iconCls: "star"
+            },
+            {
+                xtype: "panel",
+
+                title: "Tweets",
+                iconCls: "star"
+            },
+            {
+                xtype: "panel",
+
+                title: "About",
+                iconCls: "star"
             }
         ]
     }
