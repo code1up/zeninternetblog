@@ -3,10 +3,17 @@ Ext.define("App.profile.Tablet", {
 
     config: {
         views: [
+            // Infrastructure
             "App.view.Container",
-            "App.view.blog.phone.Explorer",
+            
+            // Blog
+            "App.view.blog.tablet.Explorer",
             "App.view.blog.Posts",
-            "App.view.blog.Post"
+            "App.view.blog.Post",
+
+            // Twitter
+            "App.view.twitter.tablet.Explorer",
+            "App.view.twitter.Tweets",
         ],
 
         controllers: [

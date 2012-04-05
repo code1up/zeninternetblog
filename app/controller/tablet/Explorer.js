@@ -1,11 +1,24 @@
+// TODO: could move some of this to a base class and share with phone impl
 Ext.define("App.controller.tablet.Explorer", (function() {
+
+    function _showPost(controller, post) {
+        var view = controller.getBlogPostView();
+
+        var scrollable = view.getScrollable();
+        var scroller = scrollable.getScroller();
+
+        // Set content
+        scroller.scrollTo(0, 0);
+        view.setData(post);
+    }
 
     return {
         extend: "Ext.app.Controller",
 
         config: {
             models: [
-                "App.model.blog.Post"
+                "App.model.blog.Post",
+                "App.model.twitter.Tweet"
             ],
 
             views: [
@@ -16,7 +29,8 @@ Ext.define("App.controller.tablet.Explorer", (function() {
             ],
 
             stores: [
-                "App.store.blog.Posts"
+                "App.store.blog.Posts",
+                "App.store.twitter.Tweets"
             ],
 
             refs: {

@@ -8,10 +8,14 @@ Ext.define("App.view.blog.tablet.Explorer", (function() {
     });
 
     var _titleBar = Ext.create("Ext.TitleBar", {
+<<<<<<< HEAD
         id: "titleBar", // TODO: TODOX: did this break anything?
+=======
+        id: "titleBar", // TODO: why does this collide with "toolBar" in phone?
+>>>>>>> wip
 
         docked: "top",
-        title: "Zen Internet Blog",
+        title: "Zen Blog",
 
         items: [
             _postsButton
@@ -24,7 +28,9 @@ Ext.define("App.view.blog.tablet.Explorer", (function() {
 
         config: {
             fullscreen: true,
-            layout: { type: "hbox" },
+            layout: {
+                type: "hbox"
+            },
 
             items: [
                 _titleBar,

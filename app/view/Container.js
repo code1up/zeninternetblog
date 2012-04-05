@@ -14,7 +14,7 @@ Ext.define("App.view.Container", {
                 iconCls: "chat_black1"
             },
             {
-                xtype: "panel",
+                xtype: "twitterexplorer",
 
                 title: "Tweets",
                 iconCls: "twitter2"

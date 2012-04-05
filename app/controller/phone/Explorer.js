@@ -57,7 +57,8 @@ Ext.define("App.controller.phone.Explorer", (function() {
 
         config: {
             models: [
-                "App.model.blog.Post"
+                "App.model.blog.Post",
+                "App.model.twitter.Tweets"
             ],
 
             views: [
@@ -68,7 +69,8 @@ Ext.define("App.controller.phone.Explorer", (function() {
             ],
 
             stores: [
-                "App.store.blog.Posts"
+                "App.store.blog.Posts",
+                "App.store.twitter.Tweets"
             ],
 
             refs: {

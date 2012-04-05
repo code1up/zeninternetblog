@@ -1,24 +1,50 @@
+----- BUGS / CODE
+
+Why do "titleBar" ids collide?
+
+Consider autoDestroy on views or how / when views are destroyed
+
 Implement module pattern everywhere
 
 Add Humans.txt
 
+How can I debug on iPad (Weinre / iWebInspector etc.)
+
+----- UX
+
 Handle portrait / landscape orientation change on iPad
 
-How can I debug on iPad (Weinre / iWebInspector etc.)
+WIP Implement tweets store and UI
 
 Why is iPad startup screen blank?
 
 Create startup screens and icons for Zen
 
+Add Zen logos to lists / blog post pages?
+
 Add togglable ellipsis button to hide detail in posts list
+
+----- THEMING
+
+Theme the spinner and Loading... message (prefer Working...)
+
+Theme H1 / H2 / H3
+
+"Zen Blog" or "Zen Internet Blog" - test and phone and tablet and choose one
+
+Tweets - re-theme?
+
+Consider making blog post body font a little bigger?
+
+----- DONE
 
 DONE Add icons for Twitter, Blog, About
 
-WIP Add more tabpanels: Blog, Twitter, About
+DONE Add more tabpanels: Blog, Twitter, About
 
-WIP Create tablet code / folders
+DONE Create tablet code / folders
 
-WIP Fix colors (matte?)
+DONE Fix colors (matte?)
 
 DONE Move existing code to phone folders
 

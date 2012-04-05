@@ -12,7 +12,7 @@ Ext.define("App.store.blog.Posts", {
         autoLoad: true,
 
         proxy: {
-                type: "jsonp",
+            type: "jsonp",
             url: "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://feeds.feedburner.com/zencoukblog",
 
             reader: {

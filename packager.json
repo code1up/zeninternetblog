@@ -5,20 +5,20 @@
 	 * This is the name of your application, which is displayed on the device when the app is installed. On IOS, this should match
 	 * the name of your application in the Apple Provisioning Portal.
 	 */
-	"applicationName":"Zen Blog",
+	"applicationName": "Zen Blog",
 
 	/**
 	 * @cfg {String} applicationId
 	 * This is the name namespace for your application. On IOS, this should match the name of your application in the Apple Provisioning Portal.
 	 */
-	"applicationId":"com.code1up.AppleProvisioningID",
+	"applicationId": "com.code1up.AppleProvisioningID",
 
 	/**
 	 * @cfg {String} versionString
 	 * @required
 	 * This is the version of your application.
 	 */
-	"versionString":"1.0",
+	"versionString": "1.0",
 
 	/**
 	 * @cfg {String} iconName
@@ -30,21 +30,21 @@
 	 * For Android, please refer to the Google Launcher icons guide:
 	 * http://developer.android.com/guide/practices/ui_guidelines/icon_design_launcher.html
 	 */
-	"iconName":"resources/icons/Icon~ipad.png",
+	"iconName": "resources/icons/Icon~ipad.png",
 
 	/**
 	 * @cfg {String} inputPath
 	 * @required
 	 * This is location of your Sencha Touch 2 application, relative to this configuration file.
 	 */
-	"inputPath":"build/native",
+	"inputPath": "build/native",
 
 	/**
 	 * @cfg {String} outputPath
 	 * @required
 	 * This is where the built application file with be saved.
 	 */
-	"outputPath":"build/",
+	"outputPath": "build/",
 
 	/**
 	 * @cfg {String} configuration
@@ -52,7 +52,7 @@
 	 * This is configuration for your application. `Debug` should always be used unless you are submitting your app to an online
 	 * store - in which case `Release` should be specified.
 	 */
-	"configuration":"Debug",
+	"configuration": "Debug",
 
 	/**
 	 * @cfg {String} platform
@@ -63,7 +63,7 @@
 	 *  - Android
 	 *  - AndroidEmulator
 	 */
-	"platform":"iOSSimulator",
+	"platform": "iOSSimulator",
 
 	/**
 	 * @cfg {String} deviceType
@@ -77,14 +77,14 @@
 	 *  - iPad
 	 *  - Universal
 	 */
-	"deviceType":"Universal",
+	"deviceType": "Universal",
 
 	/**
 	 * @cfg {String} certificatePath
 	 * This is the location of your certificate.
 	 * This is required when you are developing for Android or you are developing on Windows.
 	 */
-	"certificatePath":"/path/to/certificate.file",
+	"certificatePath": "/path/to/certificate.file",
 
 	/**
 	 * @cfg {String} certificateAlias
@@ -97,20 +97,20 @@
 	 *
 	 * When using a certificatePath on Windows, you do not need to specify this.
 	 */
-	"certificateAlias":"",
+	"certificateAlias": "",
 
 	/**
 	 * @cfg {String} sdkPath
 	 * This is the path to the Android SDK, if you are developing an Android application.
 	 */
-	"sdkPath":"/path/to/android-sdk",
+	"sdkPath": "/path/to/android-sdk",
 
 	/**
 	 * @cfg  androidAPILevel
 	 * This is android API level, the version of Android SDK to use, you can read more about it here: http://developer.android.com/guide/appendix/api-levels.html.
 	 * Be sure to install corresponding platform API in android SDK manager (android_sdk/tools/android)
 	 */
-	"androidAPILevel":"15",
+	"androidAPILevel": "15",
 
 	/**
 	 * @cfg  orientations
