@@ -1,6 +1,19 @@
------ BUGS / CODE
+----- RIGHT NOW
 
-Why do "titleBar" ids collide?
+Sync blog post lists
+
+Show "No post selected" plus graphic
+
+Change flex (maybe 2 / 3)
+
+Quick fix to Tweets UI
+
+Re-test on phone
+
+Make a quick about panel
+
+
+----- BUGS / CODE
 
 Consider autoDestroy on views or how / when views are destroyed
 
@@ -11,6 +24,8 @@ Add Humans.txt
 How can I debug on iPad (Weinre / iWebInspector etc.)
 
 ----- UX
+
+Add refresh buttons
 
 Handle portrait / landscape orientation change on iPad
 
@@ -36,6 +51,8 @@ Tweets - re-theme?
 
 Consider making blog post body font a little bigger?
 
+Add Zen logo to blog post title
+
 ----- DONE
 
 DONE Add icons for Twitter, Blog, About
@@ -53,3 +70,5 @@ DONE Get a new name for Navigator, conflicts with PhoneGap (Explorer)
 DONE Rename BlogEntry to Post
 
 DONE Rename view.List to view.Posts
+
+DONE Why do "titleBar" ids collide?

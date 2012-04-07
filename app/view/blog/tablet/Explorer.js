@@ -1,24 +1,37 @@
 Ext.define("App.view.blog.tablet.Explorer", (function() {
 
-    var _postsButton = Ext.create("Ext.Button", {
-        id: "postsButton",
-        text: "Posts",
-        align: "left",
-        visible: false // TODO: depends on orientation
+    var _zoomButton = Ext.create("Ext.Button", {
+        itemId: "zoomButton",
+        iconCls: "resize",
+        iconMask: true
     });
 
-    var _titleBar = Ext.create("Ext.TitleBar", {
-<<<<<<< HEAD
-        id: "titleBar", // TODO: TODOX: did this break anything?
-=======
-        id: "titleBar", // TODO: why does this collide with "toolBar" in phone?
->>>>>>> wip
+    var _postsButton = Ext.create("Ext.Button", {
+        itemId: "postsButton",
+        iconCls: "list",
+        iconMask: true,
+        hidden: true
+    });
+
+    var _refreshButton = Ext.create("Ext.Button", {
+        itemId: "refreshButton",
+        iconCls: "refresh",
+        iconMask: true
+    });
+
+    var _toolBar = Ext.create("Ext.Toolbar", {
+        itemId: "toolBar",
 
         docked: "top",
         title: "Zen Blog",
 
         items: [
-            _postsButton
+            _zoomButton,
+            _postsButton,
+            {
+                xtype: "spacer"
+            },
+            _refreshButton
         ]
     });
 
@@ -28,29 +41,32 @@ Ext.define("App.view.blog.tablet.Explorer", (function() {
 
         config: {
             fullscreen: true,
-            layout: {
-                type: "hbox"
-            },
+            layout: "hbox",
 
             items: [
-                _titleBar,
+                _toolBar,
 
                 {
                     xtype: "blogposts",
-                    id: "blogPosts",
+                    itemId: "blogPosts",
 
                     flex: 1
                 },
                 {
                     xtype: "spacer",
                     width: "2px",
-                    style: "background-color: #000000"
+                    style: "background-color: black" // TODO: remove inline style?
                 },
                 {
                     xtype: "blogpost",
-                    id: "blogPost",
+                    itemId: "blogPost",
 
                     flex: 2
+                },
+                {
+                    xtype: "blogpostsoverlay",
+                    itemId: "blogPostsOverlay",
+                    hidden: true
                 }
             ]
         }

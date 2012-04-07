@@ -25,7 +25,8 @@ Ext.define("App.controller.tablet.Explorer", (function() {
                 "App.view.Container",
                 "App.view.blog.tablet.Explorer",
                 "App.view.blog.Posts",
-                "App.view.blog.Post"
+                "App.view.blog.Post",
+                "App.view.blog.tablet.PostsOverlay"
             ],
 
             stores: [
@@ -38,18 +39,64 @@ Ext.define("App.controller.tablet.Explorer", (function() {
                 explorer: "blogexplorer",
                 blogPostsView: "blogexplorer #blogPosts",
                 blogPostView: "blogexplorer #blogPost",
+                blogPostsOverlayView: "blogexplorer #blogPostsOverlay",
 
                 // TitleBar
                 titleBar: "blogexplorer #titleBar",
 
                 // Buttons
-                backButton: "blogexplorer #backButton"
+                zoomButton: "blogexplorer #zoomButton",
+                postsButton: "blogexplorer #postsButton",
+
+                // Overlay buttons
+                doneButton: "blogpostsoverlay #doneButton",
+                layoutButton: "blogpostsoverlay #layoutButton"
             },
 
             control: {
                 blogPostsView: {
                     itemtap: function(list, index, target, record, event) {
                         _showPost(this, record.data);
+                    }
+                },
+
+                zoomButton: {
+                    tap: function(list, index, target, record, event) {
+                        console.log("zoomButton");
+
+                        this.getBlogPostsView().hide();
+                        this.getZoomButton().hide();
+                        this.getPostsButton().show();
+                    }
+                },
+
+                layoutButton: {
+                    tap: function(list, index, target, record, event) {
+                        console.log("layoutButton");
+
+                        this.getBlogPostsView().show();
+                        this.getZoomButton().show();
+                        this.getPostsButton().hide();
+                        this.getBlogPostsOverlayView().hide();
+                    }
+                },
+
+                doneButton: {
+                    tap: function(list, index, target, record, event) {
+                        console.log("doneButton");
+
+                        this.getBlogPostsOverlayView().hide();
+                    }
+                },
+
+                postsButton: {
+                    tap: function(list, index, target, record, event) {
+                        console.log("postsButton");
+
+                        var view = this.getBlogPostsOverlayView();
+                        var button = this.getPostsButton(); 
+
+                        view.showBy(button);
                     }
                 }
             }

@@ -10,6 +10,7 @@ Ext.define("App.profile.Tablet", {
             "App.view.blog.tablet.Explorer",
             "App.view.blog.Posts",
             "App.view.blog.Post",
+            "App.view.blog.tablet.PostsOverlay",
 
             // Twitter
             "App.view.twitter.tablet.Explorer",

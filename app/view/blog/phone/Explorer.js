@@ -1,7 +1,7 @@
 Ext.define("App.view.blog.phone.Explorer", (function() {
 
     var _backButton = Ext.create("Ext.Button", {
-        id: "backButton",
+        itemId: "backButton",
         ui: "back",
         text: "Back",
         align: "left",
@@ -9,7 +9,7 @@ Ext.define("App.view.blog.phone.Explorer", (function() {
     });
 
     var _titleBar = Ext.create("Ext.TitleBar", {
-        id: "titleBar",
+        itemId: "titleBar",
 
         docked: "top",
         title: "Zen Blog",
@@ -32,11 +32,11 @@ Ext.define("App.view.blog.phone.Explorer", (function() {
                 _titleBar,
                 {
                     xtype: "blogposts",
-                    id: "blogPosts"
+                    itemId: "blogPosts"
                 },
                 {
                     xtype: "blogpost",
-                    id: "blogPost"
+                    itemId: "blogPost"
                 }
             ]
         }

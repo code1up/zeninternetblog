@@ -1,7 +1,7 @@
 Ext.define("App.view.twitter.tablet.Explorer", (function() {
 
     var _titleBar = Ext.create("Ext.TitleBar", {
-        id: "titleBar",
+        itemId: "titleBar",
 
         docked: "top",
         title: "Zen Tweets",
@@ -20,7 +20,7 @@ Ext.define("App.view.twitter.tablet.Explorer", (function() {
 
                 {
                     xtype: "twittertweets",
-                    id: "twitterTweets"
+                    itemId: "twitterTweets"
                 }
             ]
         }

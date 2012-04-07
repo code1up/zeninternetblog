@@ -4,6 +4,7 @@ $active-color: #40E0D0;
 // Options: ‘matte’, ‘bevel’, ‘glossy’, ‘recessed’, and ‘flat’.
 $base-gradient: 'glossy';
 
+
 @import 'sencha-touch/default/all';
 
 // You may remove any of the following modules that you
@@ -22,6 +23,13 @@ $base-gradient: 'glossy';
 // @include sencha-form;
 @include sencha-msgbox;
 
+// Icons
+$include-default-icons: false;
+
 @include pictos-iconmask(chat_black1);
-@include pictos-iconmask(twitter2);
 @include pictos-iconmask(help_black);
+@include pictos-iconmask(layout);
+@include pictos-iconmask(list);
+@include pictos-iconmask(refresh);
+@include pictos-iconmask(resize);
+@include pictos-iconmask(twitter2);

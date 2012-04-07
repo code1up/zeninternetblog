@@ -6,8 +6,11 @@ Ext.define("App.view.blog.Posts", (function() {
 
         config: {
             store: "blogstore",
+            
+            allowDeselect: true,
 
-            styleHtmlContent: true,
+            // TODO: to style or not to style?
+            styleHtmlContent: false,
 
             itemTpl: [
                 "<h2>{title}</h2>",

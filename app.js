@@ -25,7 +25,7 @@ Ext.application({
     },
 
     phoneStartupScreen: "resources/loading/Homescreen.jpg",
-    tabletStartupScreen: "resources/loading/Default_Portrait_ipad.png",
+    tabletStartupScreen: "resources/loading/Default-Portrait_ipad.png",
 
     launch: function() {
         // Destroy the #appLoadingIndicator element
