@@ -17,15 +17,6 @@ Ext.define("App.controller.phone.Explorer", (function() {
     function _showHideBackButton(controller, visible) {
         var backButton = controller.getBackButton();
 
-        /*
-        var animation = {
-            type: "fade",
-            out: !visible,
-            duration: 2000,
-            autoClear: true
-        };
-        */
-
         if (visible) {
             backButton.show();
         } else {
@@ -101,14 +92,13 @@ Ext.define("App.controller.phone.Explorer", (function() {
             }
         },
 
-        // Move to view?
         launch: function () {
-            console.log("App.controller.phone.Navigator::launch()");
+            console.log("App.controller.phone.Explorer::launch()");
 
             this.callParent(arguments);
 
             Ext.Viewport.on("orientationchange", function() {
-                console.log("App.controller.phone.Navigator::orientationchange()");
+                console.log("App.controller.phone.Explorer::orientationchange()");
             });
         }
     };

@@ -1,6 +1,31 @@
 Ext.define("App.view.blog.tablet.PostsOverlay", (function() {
 
-    // TODO: fix up items etc
+    var _layoutButton = Ext.create("Ext.Button", {
+        itemId: "layoutButton",
+        iconCls: "layout",
+        iconMask: true
+    });
+
+    var _doneButton = Ext.create("Ext.Button", {
+        itemId: "doneButton",
+        text: "Done"
+    });
+
+    var _toolBar = Ext.create("Ext.Toolbar", {
+        itemId: "toolBar",
+
+        docked: "top",
+        title: "Posts",
+        ui: "light",
+
+        items: [
+            _layoutButton,
+            {
+                xtype: "spacer"
+            },
+            _doneButton
+        ]
+    });
 
     return {
         extend: "Ext.Panel",
@@ -11,6 +36,7 @@ Ext.define("App.view.blog.tablet.PostsOverlay", (function() {
 
             centered: true,
 
+            // TODO: move to controller
             width: 500, // width: Ext.platform.isPhone ? 260 : 400,
             height: 500, // height: Ext.platform.isPhone ? 220 : 400,
             
@@ -22,31 +48,11 @@ Ext.define("App.view.blog.tablet.PostsOverlay", (function() {
             },
 
             items: [
+                _toolBar,
                 {
-                    xtype: "toolbar",
-                    title: "Posts",
-                    docked: "top",
-                    ui: "light",
-
-                    items: [
-                        {
-                            itemId: "layoutButton",
-                            iconCls: "layout",
-                            iconMask: true
-                        },
-                        {
-                            xtype: "spacer"
-                        },
-                        {
-                            itemId: "doneButton",
-                            text: "Done",
-                        }
-                    ]
-                },
-                {
-                    xtype: "blogposts"                                    
+                    xtype: "blogposts"
                 }
             ]
         }
-    }
+    };
 }()));

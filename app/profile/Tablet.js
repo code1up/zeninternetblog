@@ -14,11 +14,12 @@ Ext.define("App.profile.Tablet", {
 
             // Twitter
             "App.view.twitter.tablet.Explorer",
-            "App.view.twitter.Tweets",
+            "App.view.twitter.Tweets"
         ],
 
         controllers: [
-            "App.controller.tablet.Explorer"
+            "App.controller.tablet.BlogExplorer",
+            "App.controller.tablet.TweetExplorer"
         ]
     },
 

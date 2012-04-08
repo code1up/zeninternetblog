@@ -18,5 +18,5 @@ Ext.define("App.view.blog.Posts", (function() {
                 "<br />{contentSnippet}"
             ].join("")
         }
-    }
+    };
 }()));

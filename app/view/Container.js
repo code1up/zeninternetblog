@@ -8,16 +8,16 @@ Ext.define("App.view.Container", {
 
         items: [
             {
-                xtype: "blogexplorer",
-
-                title: "Blog",
-                iconCls: "chat_black1"
-            },
-            {
                 xtype: "twitterexplorer",
 
                 title: "Tweets",
                 iconCls: "twitter2"
+            },
+            {
+                xtype: "blogexplorer",
+
+                title: "Blog",
+                iconCls: "chat_black1"
             },
             {
                 xtype: "panel",

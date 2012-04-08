@@ -1,10 +1,23 @@
 Ext.define("App.view.twitter.tablet.Explorer", (function() {
 
-    var _titleBar = Ext.create("Ext.TitleBar", {
-        itemId: "titleBar",
+    var _refreshButton = Ext.create("Ext.Button", {
+        itemId: "refreshButton",
+        iconCls: "refresh",
+        iconMask: true
+    });
+
+    var _toolBar = Ext.create("Ext.Toolbar", {
+        itemId: "toolBar",
 
         docked: "top",
         title: "Zen Tweets",
+
+        items: [
+            {
+                xtype: "spacer"
+            },
+            _refreshButton
+        ]
     });
 
     return {
@@ -16,7 +29,7 @@ Ext.define("App.view.twitter.tablet.Explorer", (function() {
             layout: "fit",
 
             items: [
-                _titleBar,
+                _toolBar,
 
                 {
                     xtype: "twittertweets",

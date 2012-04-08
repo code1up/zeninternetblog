@@ -1,23 +1,10 @@
-// TODO: could move some of this to a base class and share with phone impl
-Ext.define("App.controller.tablet.Explorer", (function() {
-
-    function _showPost(controller, post) {
-        var view = controller.getBlogPostView();
-
-        var scrollable = view.getScrollable();
-        var scroller = scrollable.getScroller();
-
-        // Set content
-        scroller.scrollTo(0, 0);
-        view.setData(post);
-    }
+Ext.define("App.controller.tablet.TweetExplorer", (function() {
 
     return {
         extend: "Ext.app.Controller",
 
         config: {
             models: [
-                "App.model.blog.Post",
                 "App.model.twitter.Tweet"
             ],
 
@@ -104,12 +91,12 @@ Ext.define("App.controller.tablet.Explorer", (function() {
 
         // Move to view?
         launch: function () {
-            console.log("App.controller.tablet.Navigator::launch()");
+            console.log("App.controller.tablet.Explorer::launch()");
 
             this.callParent(arguments);
 
             Ext.Viewport.on("orientationchange", function() {
-                console.log("App.controller.tablet.Navigator::orientationchange()");
+                console.log("App.controller.tablet.Explorer::orientationchange()");
             });
         }
     };

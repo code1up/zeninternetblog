@@ -1,14 +1,19 @@
+//////////////////////////////////////////////////////////////////////
+//
+// Core app-specific theme variables
+
 $base-color: #00928F;
 $active-color: #40E0D0;
 
 // Options: ‘matte’, ‘bevel’, ‘glossy’, ‘recessed’, and ‘flat’.
 $base-gradient: 'glossy';
 
+//////////////////////////////////////////////////////////////////////
+//
+// Sencha Touch 2 module import and includes
 
 @import 'sencha-touch/default/all';
 
-// You may remove any of the following modules that you
-// do not use in order to create a smaller css file.
 @include sencha-panel;
 @include sencha-buttons;
 // @include sencha-sheet;
@@ -23,7 +28,11 @@ $base-gradient: 'glossy';
 // @include sencha-form;
 @include sencha-msgbox;
 
+//////////////////////////////////////////////////////////////////////
+//
 // Icons
+//
+
 $include-default-icons: false;
 
 @include pictos-iconmask(chat_black1);
@@ -33,3 +42,45 @@ $include-default-icons: false;
 @include pictos-iconmask(refresh);
 @include pictos-iconmask(resize);
 @include pictos-iconmask(twitter2);
+
+//////////////////////////////////////////////////////////////////////
+//
+// Loading spinner
+//
+
+$loading-spinner-color: $base-color;
+@include sencha-loading-spinner();
+
+//////////////////////////////////////////////////////////////////////
+//
+// App-specific styles
+//
+
+//////////
+//
+// Tweet
+//
+.tweet-wrapper {
+	.tweet-user {
+		font-weight: bold;
+		font-size: x-large;
+		color: $base-color;
+		// padding-bottom: 3px;
+	}
+	img {
+		float: left;
+		border-radius: 5px;
+		box-shadow: 4px 4px 2px #888888;
+	}
+	.tweet {
+		margin-left: 60px;
+		min-height: 50px;
+	}
+	.tweet-text {
+		font-size: large;
+	}
+	.tweet-aside {
+		float: right;
+		color: #888888;
+	}
+}

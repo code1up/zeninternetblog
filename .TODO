@@ -1,5 +1,9 @@
 ----- RIGHT NOW
 
+ToolBar => toolbar
+
+Re-test on phone
+
 Sync blog post lists
 
 Show "No post selected" plus graphic
@@ -14,6 +18,9 @@ Make a quick about panel
 
 Fix references to Navigator
 
+----- TWEETS
+
+All (including "zen internet"), @zeninternet, @zenpartner
 
 ----- BUGS / CODE
 
@@ -49,8 +56,6 @@ Theme H1 / H2 / H3
 
 "Zen Blog" or "Zen Internet Blog" - test and phone and tablet and choose one
 
-Tweets - re-theme?
-
 Consider making blog post body font a little bigger?
 
 Add Zen logo to blog post title
@@ -74,3 +79,6 @@ DONE Rename BlogEntry to Post
 DONE Rename view.List to view.Posts
 
 DONE Why do "titleBar" ids collide?
+
+----- PUBNUB
+
