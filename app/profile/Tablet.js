@@ -18,8 +18,8 @@ Ext.define("App.profile.Tablet", {
         ],
 
         controllers: [
-            "App.controller.tablet.BlogExplorer",
-            "App.controller.tablet.TweetExplorer"
+            "App.controller.tablet.blog.Controller",
+            "App.controller.tablet.twitter.Controller"
         ]
     },
 

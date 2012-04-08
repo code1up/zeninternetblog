@@ -8,8 +8,8 @@ Ext.define("App.view.blog.phone.Explorer", (function() {
         hidden: true
     });
 
-    var _titleBar = Ext.create("Ext.TitleBar", {
-        itemId: "titleBar",
+    var _toolBar = Ext.create("Ext.Toolbar", {
+        itemId: "toolBar",
 
         docked: "top",
         title: "Zen Blog",
@@ -29,7 +29,7 @@ Ext.define("App.view.blog.phone.Explorer", (function() {
             },
 
             items: [
-                _titleBar,
+                _toolBar,
                 {
                     xtype: "blogposts",
                     itemId: "blogPosts"

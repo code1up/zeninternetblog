@@ -33,7 +33,7 @@ Ext.define("App.view.twitter.tablet.Explorer", (function() {
 
                 {
                     xtype: "twittertweets",
-                    itemId: "twitterTweets"
+                    itemId: "tweets"
                 }
             ]
         }

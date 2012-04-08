@@ -70,8 +70,8 @@ Ext.define("App.controller.phone.Explorer", (function() {
                 blogPostsView: "blogexplorer #blogPosts",
                 blogPostView: "blogexplorer #blogPost",
 
-                // TitleBar
-                titleBar: "blogexplorer #titleBar",
+                // ToolBar
+                toolBar: "blogexplorer #toolBar",
 
                 // Buttons
                 backButton: "blogexplorer #backButton"

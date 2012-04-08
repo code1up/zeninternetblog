@@ -1,5 +1,13 @@
 //////////////////////////////////////////////////////////////////////
 //
+// Custom application colors
+
+$zen-green: #00928F;
+$twitter-blue: #54738D;
+$gray: #888888;
+
+//////////////////////////////////////////////////////////////////////
+//
 // Core app-specific theme variables
 
 $base-color: #00928F;
@@ -62,10 +70,12 @@ $loading-spinner-color: $base-color;
 //
 .tweet-wrapper {
 	.tweet-user {
-		font-weight: bold;
-		font-size: x-large;
-		color: $base-color;
-		// padding-bottom: 3px;
+		a {
+			font-weight: bold;
+			font-size: x-large;
+			color: $twitter-blue;
+			text-decoration: none;		
+		}
 	}
 	img {
 		float: left;
@@ -76,11 +86,25 @@ $loading-spinner-color: $base-color;
 		margin-left: 60px;
 		min-height: 50px;
 	}
-	.tweet-text {
-		font-size: large;
-	}
 	.tweet-aside {
 		float: right;
 		color: #888888;
+	}
+	.tweet-text {
+		font-size: large;
+	}
+	.tweet-text-user {
+		font-weight: bold;
+		color: $twitter-blue;
+		text-decoration: none;
+	}
+	.tweet-text-url {
+		font-weight: bold;
+		color: $twitter-blue;
+		text-decoration: none;
+	}
+	.tweet-text-hashtag {
+		font-weight: bold;
+		color: $gray;
 	}
 }

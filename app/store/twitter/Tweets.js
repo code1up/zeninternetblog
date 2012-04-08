@@ -13,7 +13,7 @@ Ext.define("App.store.twitter.Tweets", {
 
         proxy: {
             type: "jsonp",
-            url: "http://search.twitter.com/search.json?q=%40@zeninternet",
+            url: "http://search.twitter.com/search.json?q=%40zeninternet",
 
             reader: {
                 type: "json",
