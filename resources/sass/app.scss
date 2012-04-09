@@ -3,7 +3,6 @@
 // Custom application colors
 
 $zen-green: #00928F;
-$twitter-blue: #54738D;
 $gray: #888888;
 
 //////////////////////////////////////////////////////////////////////
@@ -66,21 +65,70 @@ $loading-spinner-color: $base-color;
 
 //////////
 //
+// Blog
+//
+
+.blog-precis-wrapper {
+	.blog-precis-title {
+		font-weight: bold;
+		font-size: x-large;
+		text-transform: uppercase;
+		color: $zen-green;
+	}
+	.blog-precis-who-when {
+		font-weight: bold;
+		font-size: medium;
+		color: $gray;
+	}
+	.blog-precis-snippet {
+		font-size: medium;
+	}
+}
+
+.blog-post-wrapper {
+	.blog-post-logo {
+		float: right;
+		max-width: 64px;
+		max-height: 64px;
+	}
+	.blog-post-title {
+		font-weight: bold;
+		font-size: x-large;
+		text-transform: uppercase;
+		color: $zen-green;
+	}
+	.blog-post-who-when {
+		font-weight: bold;
+		font-size: medium;
+		color: $gray;
+	}
+	.blog-post-content {
+		font-size: medium;
+		a {
+			font-weight: bold;
+			color: $zen-green;
+			text-decoration: none;		
+		}
+	}
+}
+
+//////////
+//
 // Tweet
 //
+
 .tweet-wrapper {
 	.tweet-user {
 		a {
 			font-weight: bold;
-			font-size: x-large;
-			color: $twitter-blue;
+			color: $zen-green;
 			text-decoration: none;		
 		}
 	}
 	img {
 		float: left;
 		border-radius: 5px;
-		box-shadow: 4px 4px 2px #888888;
+		box-shadow: 4px 4px 2px $gray;
 	}
 	.tweet {
 		margin-left: 60px;
@@ -88,19 +136,19 @@ $loading-spinner-color: $base-color;
 	}
 	.tweet-aside {
 		float: right;
-		color: #888888;
+		color: $gray;
 	}
 	.tweet-text {
-		font-size: large;
+		font-size: medium;
 	}
 	.tweet-text-user {
 		font-weight: bold;
-		color: $twitter-blue;
+		color: $zen-green;
 		text-decoration: none;
 	}
 	.tweet-text-url {
 		font-weight: bold;
-		color: $twitter-blue;
+		color: $zen-green;
 		text-decoration: none;
 	}
 	.tweet-text-hashtag {
