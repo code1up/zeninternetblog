@@ -13,7 +13,7 @@ handlers:
 - url: /favicon.ico
   static_files: resources/images/favicon.ico
   upload: resources/images/favicon.ico
-  
+
 - url: /app.json
   static_files: app.json
   upload: app.json

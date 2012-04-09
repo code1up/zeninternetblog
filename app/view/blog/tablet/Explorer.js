@@ -37,7 +37,7 @@ Ext.define("App.view.blog.tablet.Explorer", (function() {
 
     return {
         extend: "Ext.Panel",
-        xtype: "blogexplorer",
+        xtype: "blogexplorer2",
 
         config: {
             fullscreen: true,
@@ -50,18 +50,20 @@ Ext.define("App.view.blog.tablet.Explorer", (function() {
                     xtype: "blogposts",
                     itemId: "blogPosts",
 
-                    flex: 1
+                    flex: 3
                 },
                 {
                     xtype: "spacer",
-                    width: "2px",
-                    style: "background-color: black" // TODO: remove inline style?
+                    itemId: "spacer",
+
+                    width: "20px",
+                    style: "background-color: lightgray"
                 },
                 {
                     xtype: "blogpost",
                     itemId: "blogPost",
 
-                    flex: 2
+                    flex: 5
                 },
                 {
                     xtype: "blogpostsoverlay",

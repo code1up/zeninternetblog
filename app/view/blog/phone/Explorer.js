@@ -36,7 +36,8 @@ Ext.define("App.view.blog.phone.Explorer", (function() {
                 },
                 {
                     xtype: "blogpost",
-                    itemId: "blogPost"
+                    itemId: "blogPost",
+                    hidden: true
                 }
             ]
         }

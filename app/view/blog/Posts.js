@@ -1,5 +1,14 @@
 Ext.define("App.view.blog.Posts", (function() {
 
+    var _itemTpl = Ext.create("Ext.XTemplate",
+        "<div class='blog-precis-wrapper'>",
+        "   <div class='blog-precis'>",
+        "       <div class='blog-precis-title'>{title}</div>",
+        "       <div class='blog-precis-who-when'>{author}, {publishedDate:date}</div>",
+        "       <div class='blog-precis-snippet'>{contentSnippet}</div>",
+        "   </div>",
+        "</div>");
+
     return {
         extend: "Ext.dataview.List",
         xtype: "blogposts",
@@ -8,15 +17,9 @@ Ext.define("App.view.blog.Posts", (function() {
             store: "blogstore",
             
             allowDeselect: true,
-
-            // TODO: to style or not to style?
             styleHtmlContent: false,
 
-            itemTpl: [
-                "<h2>{title}</h2>",
-                "<em>{author} - {publishedDate:date}</em>",
-                "<br />{contentSnippet}"
-            ].join("")
+            itemTpl: _itemTpl
         }
     };
 }()));

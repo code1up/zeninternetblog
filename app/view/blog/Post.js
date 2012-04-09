@@ -1,5 +1,15 @@
 Ext.define("App.view.blog.Post", (function() {
 
+    var _tpl = Ext.create("Ext.XTemplate",
+        "<div class='blog-post-wrapper'>",
+        "   <img class='blog-post-logo' src='resources/images/zen-logo-80x80.png' />",
+        "   <div class='blog-post'>",
+        "       <div class='blog-post-title'>{title}</div>",
+        "       <div class='blog-post-who-when'>{author}, {publishedDate:date}</div>",
+        "       <div class='blog-post-content'>{content}</div>",
+        "   </div>",
+        "</div>");
+
     return {
         extend: "Ext.Panel",
         xtype: "blogpost",
@@ -11,14 +21,11 @@ Ext.define("App.view.blog.Post", (function() {
                 direction: "vertical"
             },
 
-            styleHtmlContent: true,
+            styleHtmlContent: false,
             html: null,
+            style: "background-color: white;",
 
-            tpl: [
-                "<h2>{title}</h2>",
-                "<em>{author} - {publishedDate:date}</em>",
-                "<hr />{content}"
-            ].join("")
+            tpl: _tpl
         }
     };
 }()));

@@ -13,13 +13,13 @@ Ext.define("App.profile.Tablet", {
             "App.view.blog.tablet.PostsOverlay",
 
             // Twitter
-            "App.view.twitter.tablet.Explorer",
+            "App.view.twitter.Explorer",
             "App.view.twitter.Tweets"
         ],
 
         controllers: [
-            "App.controller.tablet.blog.Controller",
-            "App.controller.tablet.twitter.Controller"
+            "App.controller.blog.tablet.Controller",
+            "App.controller.twitter.Controller"
         ]
     },
 
@@ -29,7 +29,8 @@ Ext.define("App.profile.Tablet", {
     },
 
     launch: function() {
-        console.log("App.profile.Tablet::launch");
+        console.log("App.profile.Tablet::launch()");
+
         Ext.create("App.view.Container");
     }
 });

@@ -37,8 +37,8 @@ Ext.define("App.view.blog.tablet.PostsOverlay", (function() {
             centered: true,
 
             // TODO: move to controller
-            width: 500, // width: Ext.platform.isPhone ? 260 : 400,
-            height: 500, // height: Ext.platform.isPhone ? 220 : 400,
+            // width: 500, // width: Ext.platform.isPhone ? 260 : 400,
+            // height: 500, // height: Ext.platform.isPhone ? 220 : 400,
             
             modal: true,
             hideOnMaskTap: true,
