@@ -1,11 +1,88 @@
-Ext.define("App.controller.blog.tablet.Controller", (function() {
+Ext.define("App.controller.blog.tablet.Controller", {
+    extend: "Ext.app.Controller",
 
-    var _zoomMode = "transient"; // or persistent if user zoomed in
+    config: {
+        models: [
+            "App.model.blog.Post"
+        ],
 
-    function _zoom(controller, mode, zoom) {
-        var blogPostsView = controller.getBlogPostsView();
-        var zoomButton = controller.getZoomButton();
-        var postsButton = controller.getPostsButton();
+        views: [
+            "App.view.Container",
+            "App.view.blog.tablet.Explorer",
+            "App.view.blog.Posts",
+            "App.view.blog.Post",
+            "App.view.blog.tablet.PostsOverlay"
+        ],
+
+        stores: [
+            "App.store.blog.Posts"
+        ],
+
+        refs: {
+            // Primary views
+            explorer: "blogtabletexplorer",
+            blogPostsView: "blogtabletexplorer #blogPosts",
+            blogPostView: "blogtabletexplorer #blogPost",
+
+            // Primary view buttons
+            zoomButton: "blogtabletexplorer #zoomButton",
+            postsButton: "blogtabletexplorer #postsButton",
+
+            // Overlay views
+            blogPostsOverlayView: "blogtabletexplorer #blogTabletPostsOverlay",
+            blogPostsOverlayPostsView: "blogtabletpostsoverlay #blogPosts",
+
+            // Overlay buttons
+            doneButton: "blogtabletpostsoverlay #doneButton",
+            layoutButton: "blogtabletpostsoverlay #layoutButton"
+        },
+
+        control: {
+            blogPostsView: {
+                itemtap: function(list, index, target, record, event) {
+                    this.showPost(record.data);
+                }
+            },
+
+            blogPostsOverlayPostsView: {
+                itemtap: function(list, index, target, record, event) {
+                    this.showPost(record.data);
+                    this.showHideBlogPostsOverlay(false);
+                }
+            },
+
+            zoomButton: {
+                tap: function() {
+                    this.zoom("persistent", true);
+                }
+            },
+
+            layoutButton: {
+                tap: function() {
+                    this.unzoom();
+                }
+            },
+
+            doneButton: {
+                tap: function() {
+                    this.showHideBlogPostsOverlay(false);
+                }
+            },
+
+            postsButton: {
+                tap: function() {
+                    this.showHideBlogPostsOverlay(true);
+                }
+            }
+        },
+
+        zoomMode: "transient" // or persistent if user zoomed in
+    },
+
+    zoom: function(mode, zoom) {
+        var blogPostsView = this.getBlogPostsView();
+        var zoomButton = this.getZoomButton();
+        var postsButton = this.getPostsButton();
 
         if (zoom) {
             blogPostsView.hide();
@@ -13,7 +90,7 @@ Ext.define("App.controller.blog.tablet.Controller", (function() {
             postsButton.show();
 
         } else {
-            var blogPostsOverlayView = controller.getBlogPostsOverlayView();
+            var blogPostsOverlayView = this.getBlogPostsOverlayView();
 
             if (mode === "transient") {
                 if (!blogPostsOverlayView.getHidden()) {
@@ -27,33 +104,74 @@ Ext.define("App.controller.blog.tablet.Controller", (function() {
             }
         }
 
-        _zoomMode = mode;
-    }
+        this.setZoomMode(mode);
+    },
 
-    function _unzoom(controller) {
-        _zoom(controller, "transient", false);
-    }
+    launch: function() {
+        console.log("App.controller.blog.tablet.Controller::launch()");
+        
+        this.callParent(arguments);
 
-    function _orientate(controller, orientation, width, height) {
+        // Handle initial orientation
+        var viewport = Ext.Viewport;
+        var orientation = viewport.getOrientation();
+        var width = viewport.getWindowWidth();
+        var height = viewport.getWindowHeight();
+
+        this.orientate(orientation, width, height);
+
+        // Handle ongoing orientation changes
+        var onOrientationChangeHandler = function(viewport, orientation, width, height) {
+            console.log(orientation);
+
+            this.orientate(orientation, width, height);
+        };
+
+        viewport.on("orientationchange", onOrientationChangeHandler, this);
+
+        // Handle store refresh
+        var onStoreRefreshHandler = function(store, data, options) {
+            var record;
+
+            console.log("onStoreRefreshHandler");
+
+            if (data.length) {
+                record = data.items[0];
+
+                console.log(record);
+                this.showPost(record.data);
+            }
+        };
+
+        var store = Ext.getStore("blogstore");
+
+        store.on("refresh", onStoreRefreshHandler, this);
+    },
+
+    unzoom: function() {
+        this.zoom("transient", false);
+    },
+
+    orientate: function(orientation, width, height) {
         var zoom = (orientation === "portrait");
         var portraitWidth = Math.min(width, height);
 
-        var blogPostsOverlayView = controller.getBlogPostsOverlayView();
+        var blogPostsOverlayView = this.getBlogPostsOverlayView();
 
-        _zoom(controller, _zoomMode, zoom);
+        this.zoom(this.getZoomMode(), zoom);
 
         width = Math.max(portraitWidth * 0.8, 400);
         height = Math.max(height * 0.8, 400);
 
         blogPostsOverlayView.setSize(width, height);
-    }
+    },
 
-    function _showHideBlogPostsOverlay(controller, show) {
-        var view = controller.getBlogPostsOverlayView();
+    showHideBlogPostsOverlay: function(show) {
+        var view = this.getBlogPostsOverlayView();
 
         if (show) {
-            var postsButton = controller.getPostsButton();
-            var layoutButton = controller.getLayoutButton();
+            var postsButton = this.getPostsButton();
+            var layoutButton = this.getLayoutButton();
             var showLayoutButton = (Ext.Viewport.getOrientation() === "landscape");
 
             if (showLayoutButton) {
@@ -67,11 +185,10 @@ Ext.define("App.controller.blog.tablet.Controller", (function() {
         else {
             view.hide();
         }
-    }
+    },
 
-    // TODO: belongs in base controller class, shared with phone
-    function _showPost(controller, post) {
-        var view = controller.getBlogPostView();
+    showPost: function(post) {
+        var view = this.getBlogPostView();
 
         var scrollable = view.getScrollable();
         var scroller = scrollable.getScroller();
@@ -80,96 +197,4 @@ Ext.define("App.controller.blog.tablet.Controller", (function() {
         scroller.scrollTo(0, 0);
         view.setData(post);
     }
-
-    return {
-        extend: "Ext.app.Controller",
-
-        config: {
-            models: [
-                "App.model.blog.Post"
-            ],
-
-            views: [
-                "App.view.Container",
-                "App.view.blog.tablet.Explorer",
-                "App.view.blog.Posts",
-                "App.view.blog.Post",
-                "App.view.blog.tablet.PostsOverlay"
-            ],
-
-            stores: [
-                "App.store.blog.Posts"
-            ],
-
-            refs: {
-                // Primary views
-                explorer: "blogexplorer",
-                blogPostsView: "blogexplorer #blogPosts",
-                blogPostView: "blogexplorer #blogPost",
-                blogPostsOverlayView: "blogexplorer #blogPostsOverlay",
-
-                // Buttons
-                zoomButton: "blogexplorer #zoomButton",
-                postsButton: "blogexplorer #postsButton",
-
-                // Overlay buttons
-                doneButton: "blogpostsoverlay #doneButton",
-                layoutButton: "blogpostsoverlay #layoutButton"
-            },
-
-            control: {
-                blogPostsView: {
-                    itemtap: function(list, index, target, record, event) {
-                        _showPost(this, record.data);
-                    }
-                },
-
-                zoomButton: {
-                    tap: function() {
-                        _zoom(this, "persistent", true);
-                    }
-                },
-
-                layoutButton: {
-                    tap: function() {
-                        _unzoom(this);
-                    }
-                },
-
-                doneButton: {
-                    tap: function() {
-                        _showHideBlogPostsOverlay(this, false);
-                    }
-                },
-
-                postsButton: {
-                    tap: function() {
-                        _showHideBlogPostsOverlay(this, true);
-                    }
-                }
-            }
-        },
-
-        launch: function () {
-            console.log("App.controller.blog.tablet.Controller::launch()");
-            
-            this.callParent(arguments);
-
-            // Handle initial orientation
-            var viewport = Ext.Viewport;
-            var orientation = viewport.getOrientation();
-            var width = viewport.getWindowWidth();
-            var height = viewport.getWindowHeight();
-
-            _orientate(this, orientation, width, height);
-
-            // Handle ongoing orientation changes
-            var handler = function(viewport, orientation, width, height) {
-                console.log(orientation);
-                _orientate(this, orientation, width, height);
-            };
-
-            viewport.on("orientationchange", handler, this);
-        }
-    };
-}()));
+});
