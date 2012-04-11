@@ -1,92 +1,83 @@
-Ext.define("App.view.twitter.Tweets", (function() {
+Ext.define("App.view.twitter.Tweets", {
+    extend: "Ext.dataview.List",
+    xtype: "twittertweets",
+        
+    config: {
+        store: "twitterstore",
 
-    function _tweetText(tweet) {
-        // URLs
-        tweet = tweet.replace(
-            /(http:\/\/[^\s]*)/g,
-            "<a class='tweet-text-url' target='_blank' href='$1'>$1</a>");
+        allowSelect: false, // TODO: has no effect
+        styleHtmlContent: false,
 
-        // User names
-        tweet = tweet.replace(
-            /(^|\s)@(\w+)/g,
-            "$1<a class='tweet-text-user' target='_blank' href='https://twitter.com/$2'>@$2</a>");
+        emptyText: "No tweets found or an error occurred. Tap the refresh button to retry.",
 
-        // Hashtags
-        tweet = tweet.replace(
-            /(^|\s)#(\w+)/g,
-            "$1<span class='tweet-text-hashtag'>#$2</span>");
+        // TODO: create a separate template class (fugly)
+        itemTpl: Ext.create("Ext.XTemplate",
+            "<div class='tweet-wrapper'>",
+            "   <img src='{profile_image_url}' />",
+            "   <div class='tweet'>",
+            "       <span class='tweet-aside'>{from_user_name}, {[this.tweetAgo(values.created_at)]}</span>",
+            "       <div class='tweet-user'>{[this.tweetName(values.from_user)]}</div>",
+            "       <div class='tweet-text'>{[this.tweetText(values.text)]}</div>",
+            "   </div>",
+            "</div>",
+            {
+                tweetAgo: function(date) {
+                    try {
+                        var now = Math.ceil(Number(new Date()) / 1000);
+                        var dateTime = Math.ceil(Number(new Date(date)) / 1000);
+                        var diff = now - dateTime;
+                        var s;
 
-        return tweet;
-    }
+                        if (diff < 60) {
+                            return String(diff) + " seconds";
 
-    function _tweetName(name) {
-        return "<a target='_blank' href='https://twitter.com/" + name + "'>@" + name + "</a>";
-    }
+                        } else if (diff < 3600) {
+                            s = String(Math.ceil(diff / (60)));
 
-    function _tweetAgo(date) {
-        try {
-            var now = Math.ceil(Number(new Date()) / 1000);
-            var dateTime = Math.ceil(Number(new Date(date)) / 1000);
-            var diff = now - dateTime;
-            var s;
+                            return s + (s === "1" ? " minute" : " minutes");
 
-            if (diff < 60) {
-                return String(diff) + " seconds ago";
+                        } else if (diff < 86400) {
+                            s = String(Math.ceil(diff / (3600)));
 
-            } else if (diff < 3600) {
-                s = String(Math.ceil(diff / (60)));
+                            return s + (s === "1" ? " hour" : " hours");
 
-                return s + (s === "1" ? " minute" : " minutes") + " ago";
+                        } else if (diff < 60 * 60 * 24 * 365) {
+                            s = String(Math.ceil(diff / (60 * 60 * 24)));
 
-            } else if (diff < 86400) {
-                s = String(Math.ceil(diff / (3600)));
+                            return s + (s === "1" ? " day" : " days");
 
-                return s + (s === "1" ? " hour" : " hours") + " ago";
+                        } else {
+                            return Ext.Date.format(new Date(date), "jS M 'y");
 
-            } else if (diff < 60 * 60 * 24 * 365) {
-                s = String(Math.ceil(diff / (60 * 60 * 24)));
+                        }
+                    } catch (e) {
+                        return "Sometime";
+                    }
+                },
 
-                return s + (s === "1" ? " day" : " days") + " ago";
+                tweetName: function(name) {
+                    return "<a target='_blank' href='https://twitter.com/" + name + "'>@" + name + "</a>";
+                },
 
-            } else {
-                return Ext.Date.format(new Date(date), "jS M 'y");
+                tweetText: function(tweet) {
+                    // URLs
+                    tweet = tweet.replace(
+                        /(http:\/\/[^\s]*)/g,
+                        "<span class='tweet-text-url'><a target='_blank' href='$1'>$1</a></span>");
 
+                    // User names
+                    tweet = tweet.replace(
+                        /(^|\s)@(\w+)/g,
+                        "$1<span class='tweet-text-user'><a target='_blank' href='https://twitter.com/$2'>@$2</a></span>");
+
+                    // Hashtags
+                    tweet = tweet.replace(
+                        /(^|\s)#(\w+)/g,
+                        "$1<span class='tweet-text-hashtag'>#$2</span>");
+
+                    return tweet;
+                }
             }
-        } catch (e) {
-            return "Sometime";
-        }
+        )
     }
-
-    // "$1<a class='tweet-text-user' target='_blank' href='https://twitter.com/$2'>@$2</a>"
-
-    var _itemTpl = Ext.create("Ext.XTemplate",
-        "<div class='tweet-wrapper'>",
-        "   <img src='{profile_image_url}' />",
-        "   <div class='tweet'>",
-        "       <span class='tweet-aside'>{from_user_name}, {[this.tweetAgo(values.created_at)]}</span>",
-        "       <div class='tweet-user'>{[this.tweetName(values.from_user)]}</div>",
-        "       <div class='tweet-text'>{[this.tweetText(values.text)]}</div>",
-        "   </div>",
-        "</div>",
-        {
-            tweetAgo: _tweetAgo,
-            tweetText: _tweetText,
-            tweetName: _tweetName
-        });
-
-    return {
-        extend: "Ext.dataview.List",
-        xtype: "twittertweets",
-
-        config: {
-            store: "twitterstore",
-
-            allowDeselect: true,
-            styletweetContent: false,
-
-            emptyText: "No tweets found.",
-
-            itemTpl: _itemTpl
-        }
-    };
-}()));
+});
