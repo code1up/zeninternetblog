@@ -1,15 +1,14 @@
 //<debug>
-Ext.Loader.setPath({
-    "Ext": "sdk/src"
-});
+// Ext.Loader.setPath({
+// "Ext": "sdk/src"
+// });
 //</debug>
 
 Ext.application({
     name: "App",
 
     requires: [
-        "Ext.MessageBox",
-        "Ext.TitleBar" // TODO: is there an Ext.require function?
+        "Ext.MessageBox"
     ],
 
     profiles: [
@@ -25,7 +24,8 @@ Ext.application({
     },
 
     phoneStartupScreen: "resources/loading/Homescreen.jpg",
-    tabletStartupScreen: "resources/loading/Default-Portrait_ipad.png",
+    // tabletStartupScreen: "resources/loading/Default-Portrait_ipad.png",
+    tabletStartupScreen: "resources/loading/Zen-logo-ipad-portrait.png",
 
     launch: function() {
         // Destroy the #appLoadingIndicator element
