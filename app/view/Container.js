@@ -8,7 +8,7 @@ Ext.define("App.view.Container", {
 
         items: [
             {
-                xtype: "blogexplorer",
+                xtype: Ext.os.is.Phone ? "blogphoneexplorer" : "blogtabletexplorer",
 
                 title: "Blog",
                 iconCls: "chat_black1"

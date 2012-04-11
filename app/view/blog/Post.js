@@ -1,31 +1,28 @@
-Ext.define("App.view.blog.Post", (function() {
+Ext.define("App.view.blog.Post", {
+    extend: "Ext.Panel",
+    xtype: "blogpost",
 
-    var _tpl = Ext.create("Ext.XTemplate",
-        "<div class='blog-post-wrapper'>",
-        "   <img class='blog-post-logo' src='resources/images/zen-logo-80x80.png' />",
-        "   <div class='blog-post'>",
-        "       <div class='blog-post-title'>{title}</div>",
-        "       <div class='blog-post-who-when'>{author}, {publishedDate:date}</div>",
-        "       <div class='blog-post-content'>{content}</div>",
-        "   </div>",
-        "</div>");
+    config: {
+        layout: "fit",
 
-    return {
-        extend: "Ext.Panel",
-        xtype: "blogpost",
+        scrollable: {
+            direction: "vertical"
+        },
 
-        config: {
-            layout: "fit",
+        styleHtmlContent: false,
+        html: null,
+        style: "background-color: white;",
 
-            scrollable: {
-                direction: "vertical"
-            },
-
-            styleHtmlContent: false,
-            html: null,
-            style: "background-color: white;",
-
-            tpl: _tpl
-        }
-    };
-}()));
+        // TODO: create a separate template class (fugly)
+        tpl: [
+            "<div class='blog-post-wrapper'>",
+            "   <img class='blog-post-logo' src='resources/images/zen-logo-80x80.png' />",
+            "   <div class='blog-post'>",
+            "       <div class='blog-post-title'>{title}</div>",
+            "       <div class='blog-post-who-when'>{author}, {publishedDate:date}</div>",
+            "       <div class='blog-post-content'>{content}</div>",
+            "   </div>",
+            "</div>"
+        ].join("")
+    }
+});
