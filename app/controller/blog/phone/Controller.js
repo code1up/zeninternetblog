@@ -1,7 +1,64 @@
-Ext.define("App.controller.blog.phone.Controller", (function() {
+Ext.define("App.controller.blog.phone.Controller", {
+    extend: "Ext.app.Controller",
 
-    function _setActiveItem(controller, index) {
-        var view = controller.getExplorer();
+    config: {
+        models: [
+            "App.model.blog.Post",
+            "App.model.twitter.Tweet"
+        ],
+
+        views: [
+            "App.view.Container",
+            "App.view.blog.phone.Explorer",
+            "App.view.blog.Posts",
+            "App.view.blog.Post"
+        ],
+
+        stores: [
+            "App.store.blog.Posts",
+            "App.store.twitter.Tweets"
+        ],
+
+        refs: {
+            // Primary views
+            explorer: "blogphoneexplorer",
+            blogPostsView: "blogphoneexplorer #blogPosts",
+            blogPostView: "blogphoneexplorer #blogPost",
+
+            // ToolBar
+            toolBar: "blogphoneexplorer #toolBar",
+
+            // Buttons
+            backButton: "blogphoneexplorer #backButton"
+        },
+
+        control: {
+            blogPostsView: {
+                itemtap: function(list, index, target, record, event) {
+                    this.showPost(record.data);
+                }
+            },
+
+            backButton: {
+                tap: function() {
+                    this.showPosts();
+                }
+            }
+        }
+    },
+
+    launch: function () {
+        console.log("App.controller.blog.phone.Controller::launch()");
+        
+        this.callParent(arguments);
+
+        Ext.Viewport.on("orientationchange", function() {
+            // TODO: handle phone orientation change on phone (if any)
+        });
+    },
+
+    setActiveItem: function(index) {
+        var view = this.getExplorer();
         var layout = view.getLayout();
 
         var direction = index === 0 ? "right" : "left";
@@ -12,25 +69,25 @@ Ext.define("App.controller.blog.phone.Controller", (function() {
         });
 
         view.setActiveItem(index);
-    }
+    },
 
-    function _showHideBackButton(controller, visible) {
-        var backButton = controller.getBackButton();
+    showHideBackButton: function(visible) {
+        var backButton = this.getBackButton();
 
         if (visible) {
             backButton.show();
         } else {
             backButton.hide();
         }
-    }
+    },
 
-    function _showPosts(controller) {
-        _setActiveItem(controller, 0);
-        _showHideBackButton(controller, false);
-    }
+    showPosts: function() {
+        this.setActiveItem(0);
+        this.showHideBackButton(false);
+    },
 
-    function _showPost(controller, post) {
-        var view = controller.getBlogPostView();
+    showPost: function(post) {
+        var view = this.getBlogPostView();
 
         var scrollable = view.getScrollable();
         var scroller = scrollable.getScroller();
@@ -39,67 +96,7 @@ Ext.define("App.controller.blog.phone.Controller", (function() {
         scroller.scrollTo(0, 0);
         view.setData(post);
 
-        _setActiveItem(controller, 1);
-        _showHideBackButton(controller, true);
+        this.setActiveItem(1);
+        this.showHideBackButton(true);
     }
-
-    return {
-        extend: "Ext.app.Controller",
-
-        config: {
-            models: [
-                "App.model.blog.Post",
-                "App.model.twitter.Tweet"
-            ],
-
-            views: [
-                "App.view.Container",
-                "App.view.blog.phone.Explorer",
-                "App.view.blog.Posts",
-                "App.view.blog.Post"
-            ],
-
-            stores: [
-                "App.store.blog.Posts",
-                "App.store.twitter.Tweets"
-            ],
-
-            refs: {
-                // Primary views
-                explorer: "blogexplorer",
-                blogPostsView: "blogexplorer #blogPosts",
-                blogPostView: "blogexplorer #blogPost",
-
-                // ToolBar
-                toolBar: "blogexplorer #toolBar",
-
-                // Buttons
-                backButton: "blogexplorer #backButton"
-            },
-
-            control: {
-                blogPostsView: {
-                    itemtap: function(list, index, target, record, event) {
-                        _showPost(this, record.data);
-                    }
-                },
-
-                backButton: {
-                    tap: function() {
-                        _showPosts(this);
-                    }
-                }
-            }
-        },
-
-        launch: function () {
-            console.log("App.controller.blog.phone.Controller::launch()");
-            
-            this.callParent(arguments);
-
-            Ext.Viewport.on("orientationchange", function() {
-                // TODO: handle phone orientation change
-            });
-        }
-    };
-}()));
+});
