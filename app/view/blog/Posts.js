@@ -1,25 +1,25 @@
-Ext.define("App.view.blog.Posts", (function() {
+Ext.define("App.view.blog.Posts", {
+    extend: "Ext.dataview.List",
+    xtype: "blogposts",
 
-    var _itemTpl = Ext.create("Ext.XTemplate",
-        "<div class='blog-precis-wrapper'>",
-        "   <div class='blog-precis'>",
-        "       <div class='blog-precis-title'>{title}</div>",
-        "       <div class='blog-precis-who-when'>{author}, {publishedDate:date}</div>",
-        "       <div class='blog-precis-snippet'>{contentSnippet}</div>",
-        "   </div>",
-        "</div>");
+    config: {
+        store: "blogstore",
+        
+        allowSelect: true,
+        allowDeselect: false,
+        styleHtmlContent: false,
 
-    return {
-        extend: "Ext.dataview.List",
-        xtype: "blogposts",
+        emptyText: "No blog posts found or an error occurred. Tap the refresh button to retry.",
 
-        config: {
-            store: "blogstore",
-            
-            allowDeselect: true,
-            styleHtmlContent: false,
-
-            itemTpl: _itemTpl
-        }
-    };
-}()));
+        // TODO: create a separate template class (fugly)
+        itemTpl: [
+            "<div class='blog-precis-wrapper'>",
+            "   <div class='blog-precis'>",
+            "       <div class='blog-precis-title'>{title}</div>",
+            "       <div class='blog-precis-who-when'>{author}, {publishedDate:date}</div>",
+            "       <div class='blog-precis-snippet'>{contentSnippet}</div>",
+            "   </div>",
+            "</div>"
+        ].join("")
+    }
+});

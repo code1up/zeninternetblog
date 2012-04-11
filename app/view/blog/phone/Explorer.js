@@ -1,45 +1,48 @@
-Ext.define("App.view.blog.phone.Explorer", (function() {
+Ext.define("App.view.blog.phone.Explorer", {
+    extend: "Ext.Panel",
+    xtype: "blogphoneexplorer",
 
-    var _backButton = Ext.create("Ext.Button", {
-        itemId: "backButton",
-        ui: "back",
-        text: "Back",
-        align: "left",
-        hidden: true
-    });
-
-    var _toolBar = Ext.create("Ext.Toolbar", {
-        itemId: "toolBar",
-
-        docked: "top",
-        title: "Zen Blog",
+    config: {
+        layout: {
+            type: "card"
+        },
 
         items: [
-            _backButton
-        ]
-    });
+            {
+                xtype: "toolbar",
+                itemId: "toolBar",
 
-    return {
-        extend: "Ext.Panel",
-        xtype: "blogexplorer",
+                docked: "top",
+                title: "Zen Blog",
 
-        config: {
-            layout: {
-                type: "card"
+                items: [
+                    {
+                        xtype: "button",
+                        itemId: "backButton",
+                        ui: "back",
+                        text: "Back",
+                        hidden: true
+                    },
+                    {
+                        xtype: "spacer"
+                    },
+                    {
+                        xtype: "button",
+                        itemId: "refreshButton",
+                        iconCls: "refresh",
+                        iconMask: true
+                    }
+                ]
             },
-
-            items: [
-                _toolBar,
-                {
-                    xtype: "blogposts",
-                    itemId: "blogPosts"
-                },
-                {
-                    xtype: "blogpost",
-                    itemId: "blogPost",
-                    hidden: true
-                }
-            ]
-        }
-    };
-}()));
+            {
+                xtype: "blogposts",
+                itemId: "blogPosts"
+            },
+            {
+                xtype: "blogpost",
+                itemId: "blogPost",
+                hidden: true
+            }
+        ]
+    }
+});

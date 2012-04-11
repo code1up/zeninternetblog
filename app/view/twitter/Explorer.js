@@ -1,41 +1,35 @@
-Ext.define("App.view.twitter.Explorer", (function() {
+Ext.define("App.view.twitter.Explorer", {
+    extend: "Ext.Panel",
+    xtype: "twitterexplorer",
 
-    var _refreshButton = Ext.create("Ext.Button", {
-        itemId: "refreshButton",
-        iconCls: "refresh",
-        iconMask: true
-    });
-
-    var _toolBar = Ext.create("Ext.Toolbar", {
-        itemId: "toolBar",
-
-        docked: "top",
-        title: "Zen Tweets",
+    config: {
+        fullscreen: true,
+        layout: "fit",
 
         items: [
             {
-                xtype: "spacer"
+                xtype: "toolbar",
+                itemId: "toolBar",
+
+                docked: "top",
+                title: "Zen Tweets",
+
+                items: [
+                    {
+                        xtype: "spacer"
+                    },
+                    {
+                        xtype: "button",
+                        itemId: "refreshButton",
+                        iconCls: "refresh",
+                        iconMask: true
+                    }
+                ]
             },
-            _refreshButton
+            {
+                xtype: "twittertweets",
+                itemId: "tweets"
+            }
         ]
-    });
-
-    return {
-        extend: "Ext.Panel",
-        xtype: "twitterexplorer",
-
-        config: {
-            fullscreen: true,
-            layout: "fit",
-
-            items: [
-                _toolBar,
-
-                {
-                    xtype: "twittertweets",
-                    itemId: "tweets"
-                }
-            ]
-        }
-    };
-}()));
+    }
+});

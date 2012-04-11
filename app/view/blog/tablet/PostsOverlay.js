@@ -1,58 +1,49 @@
-Ext.define("App.view.blog.tablet.PostsOverlay", (function() {
+Ext.define("App.view.blog.tablet.PostsOverlay", {
+    extend: "Ext.Panel",
+    xtype: "blogtabletpostsoverlay",
 
-    var _layoutButton = Ext.create("Ext.Button", {
-        itemId: "layoutButton",
-        iconCls: "layout",
-        iconMask: true
-    });
+    config: {
+        layout: "fit",
 
-    var _doneButton = Ext.create("Ext.Button", {
-        itemId: "doneButton",
-        text: "Done"
-    });
+        centered: true,
 
-    var _toolBar = Ext.create("Ext.Toolbar", {
-        itemId: "toolBar",
+        modal: true,
+        hideOnMaskTap: true,
 
-        docked: "top",
-        title: "Posts",
-        ui: "light",
+        scrollable: {
+            direction: "vertical"
+        },
 
         items: [
-            _layoutButton,
             {
-                xtype: "spacer"
+                xtype: "toolbar",
+                itemId: "toolBar",
+
+                docked: "top",
+                title: "Posts",
+                ui: "light",
+
+                items: [
+                    {
+                        xtype: "button",
+                        itemId: "layoutButton",
+                        iconCls: "layout",
+                        iconMask: true
+                    },
+                    {
+                        xtype: "spacer"
+                    },
+                    {
+                        xtype: "button",
+                        itemId: "doneButton",
+                        text: "Done"
+                    }
+                ]
             },
-            _doneButton
+            {
+                xtype: "blogposts",
+                itemId: "blogPosts"
+            }
         ]
-    });
-
-    return {
-        extend: "Ext.Panel",
-        xtype: "blogpostsoverlay",
-
-        config: {
-            layout: "fit",
-
-            centered: true,
-
-            // TODO: move to controller
-            // width: 500, // width: Ext.platform.isPhone ? 260 : 400,
-            // height: 500, // height: Ext.platform.isPhone ? 220 : 400,
-            
-            modal: true,
-            hideOnMaskTap: true,
-
-            scrollable: {
-                direction: "vertical"
-            },
-
-            items: [
-                _toolBar,
-                {
-                    xtype: "blogposts"
-                }
-            ]
-        }
-    };
-}()));
+    }
+});
