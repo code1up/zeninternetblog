@@ -117,24 +117,27 @@ $loading-spinner-color: $base-color;
 // Tweet
 //
 
+// TODO: need to radically prune this SASS
 .tweet-wrapper {
-	.tweet-user {
-		a {
-			font-weight: bold;
-			color: $zen-green;
-			text-decoration: none;		
-		}
-	}
 	img {
 		float: left;
 		border-radius: 5px;
 		box-shadow: 4px 4px 2px $gray;
+	}
+	.tweet-user {
+		a {
+			font-size: large;
+			font-weight: bold;
+			color: $zen-green;
+			text-decoration: none;
+		}
 	}
 	.tweet {
 		margin-left: 60px;
 		min-height: 50px;
 	}
 	.tweet-aside {
+		font-size: medium;
 		float: right;
 		color: $gray;
 	}
@@ -142,16 +145,23 @@ $loading-spinner-color: $base-color;
 		font-size: medium;
 	}
 	.tweet-text-user {
-		font-weight: bold;
-		color: $zen-green;
-		text-decoration: none;
+		a {
+			font-size: medium;
+			font-weight: bold;
+			color: $zen-green;
+			text-decoration: none;
+		}
 	}
 	.tweet-text-url {
-		font-weight: bold;
-		color: $zen-green;
-		text-decoration: none;
+		a {
+			font-size: medium;
+			font-weight: bold;
+			color: $zen-green;
+			text-decoration: none;
+		}
 	}
 	.tweet-text-hashtag {
+		font-size: medium;
 		font-weight: bold;
 		color: $gray;
 	}
