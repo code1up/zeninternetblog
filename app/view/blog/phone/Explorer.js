@@ -9,11 +9,11 @@ Ext.define("App.view.blog.phone.Explorer", {
 
         items: [
             {
-                xtype: "toolbar",
-                itemId: "toolBar",
+                xtype: "titlebar",
+                itemId: "titleBar",
 
                 docked: "top",
-                title: "Zen Blog",
+                title: "Blog",
 
                 items: [
                     {
@@ -24,14 +24,13 @@ Ext.define("App.view.blog.phone.Explorer", {
                         hidden: true
                     },
                     {
-                        xtype: "spacer"
-                    },
-                    {
                         xtype: "button",
                         itemId: "refreshButton",
                         iconCls: "refresh",
-                        iconMask: true
-                    }
+                        iconMask: true,
+                        ui: "plain",
+                        align: "right"
+                   }
                 ]
             },
             {

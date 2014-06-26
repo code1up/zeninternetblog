@@ -8,21 +8,20 @@ Ext.define("App.view.twitter.Explorer", {
 
         items: [
             {
-                xtype: "toolbar",
-                itemId: "toolBar",
+                xtype: "titlebar",
+                itemId: "titleBar",
 
                 docked: "top",
-                title: "Zen Tweets",
+                title: "Tweets",
 
                 items: [
-                    {
-                        xtype: "spacer"
-                    },
                     {
                         xtype: "button",
                         itemId: "refreshButton",
                         iconCls: "refresh",
-                        iconMask: true
+                        iconMask: true,
+                        ui: "plain",
+                        align: "right"
                     }
                 ]
             },

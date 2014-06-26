@@ -1,5 +1,13 @@
 ----- RIGHT NOW
 
+Toolbar => Titlebar
+
+use Button action, not id in controllers
+
+ui: plain for toolbar buttons
+
+-----
+
 ToolBar => toolbar
 
 Re-test on phone

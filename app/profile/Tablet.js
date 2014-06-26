@@ -1,6 +1,10 @@
 Ext.define("App.profile.Tablet", {
     extend: "Ext.app.Profile",
 
+    requires: [
+        "Ext.TitleBar"
+    ],
+
     config: {
         views: [
             // Infrastructure
@@ -25,7 +29,7 @@ Ext.define("App.profile.Tablet", {
 
     isActive: function() {
         // NOTE: make sure we have a fallback profile (e.g. for desktop)
-        return Ext.os.is.Tablet || Ext.os.is.Desktop;
+        return Ext.os.is.Tablet || true; // Ext.os.is.Desktop;
     },
 
     launch: function() {

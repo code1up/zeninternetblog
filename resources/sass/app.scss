@@ -9,7 +9,7 @@ $gray: #888888;
 //
 // Core app-specific theme variables
 
-$base-color: #00928F;
+$base-color: $zen-green;
 $active-color: #40E0D0;
 
 // Options: ‘matte’, ‘bevel’, ‘glossy’, ‘recessed’, and ‘flat’.
@@ -47,8 +47,9 @@ $include-default-icons: false;
 @include pictos-iconmask(layout);
 @include pictos-iconmask(list);
 @include pictos-iconmask(refresh);
-@include pictos-iconmask(resize);
+@include pictos-iconmask(expand);
 @include pictos-iconmask(twitter2);
+@include pictos-iconmask(warning_black);
 
 //////////////////////////////////////////////////////////////////////
 //

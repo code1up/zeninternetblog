@@ -8,7 +8,7 @@ Ext.define("App.view.Container", {
 
         items: [
             {
-                xtype: Ext.os.is.Phone ? "blogphoneexplorer" : "blogtabletexplorer",
+                xtype: "blogphoneexplorer",
 
                 title: "Blog",
                 iconCls: "chat_black1"
@@ -18,6 +18,12 @@ Ext.define("App.view.Container", {
 
                 title: "Tweets",
                 iconCls: "twitter2"
+            },
+            {
+                xtype: "panel",
+
+                title: "Alerts",
+                iconCls: "warning_black"
             },
             {
                 xtype: "panel",

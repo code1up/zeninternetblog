@@ -1,6 +1,10 @@
 Ext.define("App.profile.Phone", {
     extend: "Ext.app.Profile",
 
+    requires: [
+        "Ext.TitleBar"
+    ],
+
     config: {
         views: [
             // Infrastructure

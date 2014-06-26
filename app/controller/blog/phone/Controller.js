@@ -25,11 +25,12 @@ Ext.define("App.controller.blog.phone.Controller", {
             blogPostsView: "blogphoneexplorer #blogPosts",
             blogPostView: "blogphoneexplorer #blogPost",
 
-            // ToolBar
-            toolBar: "blogphoneexplorer #toolBar",
+            // TitleBar
+            titleBar: "blogphoneexplorer #titleBar",
 
             // Buttons
-            backButton: "blogphoneexplorer #backButton"
+            backButton: "blogphoneexplorer #backButton",
+            refreshButton: "blogphoneexplorer #refreshButton"
         },
 
         control: {
@@ -71,19 +72,22 @@ Ext.define("App.controller.blog.phone.Controller", {
         view.setActiveItem(index);
     },
 
-    showHideBackButton: function(visible) {
+    showHideButtons: function(back) {
         var backButton = this.getBackButton();
+        var refreshButton = this.getRefreshButton();
 
-        if (visible) {
+        if (back) {
             backButton.show();
+            refreshButton.hide();
         } else {
             backButton.hide();
+            refreshButton.show();
         }
     },
 
     showPosts: function() {
         this.setActiveItem(0);
-        this.showHideBackButton(false);
+        this.showHideButtons(false);
     },
 
     showPost: function(post) {
@@ -97,6 +101,6 @@ Ext.define("App.controller.blog.phone.Controller", {
         view.setData(post);
 
         this.setActiveItem(1);
-        this.showHideBackButton(true);
+        this.showHideButtons(true);
     }
 });

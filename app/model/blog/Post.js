@@ -7,7 +7,17 @@ Ext.define("App.model.blog.Post", {
             "author",
             "publishedDate",
             "contentSnippet",
-            "content"
+            "content",
+
+            {
+                name: "monthYear",
+                convert: function(value, record) {
+                    var date = record.get("publishedDate");
+                    var mm = date.substr(8, 8);
+
+                    return mm;
+                }
+            }
         ]
     }
 });

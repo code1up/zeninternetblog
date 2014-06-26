@@ -8,34 +8,35 @@ Ext.define("App.view.blog.tablet.Explorer", {
 
         items: [
             {
-                xtype: "toolbar",
-                itemId: "toolBar",
+                xtype: "titlebar",
+                itemId: "titleBar",
 
                 docked: "top",
-                title: "Zen Blog",
+                title: "Blog",
 
                 items: [
                     {
                         xtype: "button",
                         itemId: "zoomButton",
-                        iconCls: "resize",
-                        iconMask: true
+                        iconCls: "expand",
+                        iconMask: true,
+                        ui: "plain"
                     },
                     {
                         xtype: "button",
                         itemId: "postsButton",
                         iconCls: "list",
                         iconMask: true,
+                        ui: "plain",
                         hidden: true
-                    },
-                    {
-                        xtype: "spacer"
                     },
                     {
                         xtype: "button",
                         itemId: "refreshButton",
                         iconCls: "refresh",
-                        iconMask: true                        
+                        iconMask: true,
+                        ui: "plain",
+                        align: "right"
                     }
                 ]
             },

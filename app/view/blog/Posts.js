@@ -4,7 +4,10 @@ Ext.define("App.view.blog.Posts", {
 
     config: {
         store: "blogstore",
-        
+        grouped: true,
+        // indexBar: true,
+        pinHeaders: true,
+                
         allowSelect: true,
         allowDeselect: false,
         styleHtmlContent: false,

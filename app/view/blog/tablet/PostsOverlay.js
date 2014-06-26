@@ -16,8 +16,8 @@ Ext.define("App.view.blog.tablet.PostsOverlay", {
 
         items: [
             {
-                xtype: "toolbar",
-                itemId: "toolBar",
+                xtype: "titlebar",
+                itemId: "titleBar",
 
                 docked: "top",
                 title: "Posts",
@@ -28,15 +28,14 @@ Ext.define("App.view.blog.tablet.PostsOverlay", {
                         xtype: "button",
                         itemId: "layoutButton",
                         iconCls: "layout",
-                        iconMask: true
-                    },
-                    {
-                        xtype: "spacer"
+                        iconMask: true,
+                        ui: "plain"
                     },
                     {
                         xtype: "button",
                         itemId: "doneButton",
-                        text: "Done"
+                        text: "Done",
+                        align: "right"
                     }
                 ]
             },
